@@ -9,12 +9,16 @@ Valyu is the [leading search API for AI agents](https://www.valyu.ai/blogs/bench
 ## Installation
 
 ```bash
-pip install valyu-agentcore
+uv init
+```
+
+```bash
+uv add valyu-agentcore
 ```
 
 For AgentCore Gateway support:
 ```bash
-pip install valyu-agentcore[agentcore]
+uv add valyu-agentcore[agentcore]
 ```
 
 ## Quick Start
@@ -36,9 +40,26 @@ agent = Agent(
 response = agent("Summarize Tesla's latest 10-K risk factors")
 ```
 
-Get your API key at [platform.valyu.ai](https://platform.valyu.ai).
+Get your API key at [platform.valyu.ai](https://platform.valyu.ai).  
+![Get your API Keys at platform.valyu.ai](assets/valyu-api.png)
 
 ### Production: AgentCore Gateway + Runtime
+
+![Valyu AgentCore Architecture](architecture/valyu-agentcore-architecture.png)
+**Architecture Flow:**
+1. **Local Development**: Developers can build and tests agent locally with direct API calls to Valyu
+2. **Deploy Runtime**: Agent can be deployed to AgentCore Runtime via `agentcore launch`
+3. **Configure Gateway**: Developers can set up Gateway with Valyu MCP target
+4. **Authentication**: Runtime requests access token from Cognito
+5. **Token Response**: Cognito returns JWT access token
+6. **Tool Invocation**: Runtime calls Gateway with Bearer token
+7. **Request Forward**: Gateway forwards request to Valyu MCP target
+8. **API Query**: MCP target makes search query to Valyu API
+9. **Search Results**: Valyu API returns search results
+10. **MCP Response**: MCP target formats response back to Gateway
+11. **Final Results**: Gateway returns tool results to Runtime agent
+
+
 
 For production, deploy to AWS with centralized tool access:
 
