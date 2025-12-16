@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "valyu-agentcore"
-version = "0.1.2"
+version = "0.1.3"
 description = "Valyu search tools for AWS Bedrock AgentCore - web, finance, academic, biomedical, patent, SEC, and economics search"
 readme = "README.md"
 license = "MIT"
