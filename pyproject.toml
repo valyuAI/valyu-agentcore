@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "valyu-agentcore"
-version = "0.1.1"
+version = "0.1.2"
 description = "Valyu search tools for AWS Bedrock AgentCore - web, finance, academic, biomedical, patent, SEC, and economics search"
 readme = "README.md"
 license = "MIT"
@@ -65,6 +65,12 @@ all = [
     "bedrock-agentcore>=1.0.0",
     "bedrock-agentcore-starter-toolkit>=0.2.0",
     "mcp>=1.0.0",
+]
+demo = [
+    "strands-agents>=0.1.0",
+    "boto3>=1.28.0",
+    "streamlit>=1.30.0",
+    "pyyaml>=6.0.0",
 ]
 dev = [
     "pytest>=7.0.0",

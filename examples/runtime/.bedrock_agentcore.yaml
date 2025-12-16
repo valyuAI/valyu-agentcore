@@ -1,0 +1,54 @@
+default_agent: valyuagent
+agents:
+  valyuagent:
+    name: valyuagent
+    entrypoint: /Users/harveyyorke/dev/valyu-agentcore/examples/runtime/agent.py
+    deployment_type: container
+    runtime_type: null
+    platform: linux/arm64
+    container_runtime: none
+    source_path: /Users/harveyyorke/dev/valyu-agentcore/examples/runtime
+    aws:
+      execution_role: arn:aws:iam::627665855519:role/AmazonBedrockAgentCoreSDKRuntime-us-east-1-e45359194e
+      execution_role_auto_create: false
+      account: '627665855519'
+      region: us-east-1
+      ecr_repository: 627665855519.dkr.ecr.us-east-1.amazonaws.com/bedrock-agentcore-valyuagent
+      ecr_auto_create: false
+      s3_path: null
+      s3_auto_create: false
+      network_configuration:
+        network_mode: PUBLIC
+        network_mode_config: null
+      protocol_configuration:
+        server_protocol: HTTP
+      observability:
+        enabled: true
+      lifecycle_configuration:
+        idle_runtime_session_timeout: null
+        max_lifetime: null
+    bedrock_agentcore:
+      agent_id: valyuagent-liNAye96Gg
+      agent_arn: arn:aws:bedrock-agentcore:us-east-1:627665855519:runtime/valyuagent-liNAye96Gg
+      agent_session_id: 77f1c241-73c2-419f-829a-2781c6722df2
+    codebuild:
+      project_name: bedrock-agentcore-valyuagent-builder
+      execution_role: arn:aws:iam::627665855519:role/AmazonBedrockAgentCoreSDKCodeBuild-us-east-1-e45359194e
+      source_bucket: bedrock-agentcore-codebuild-sources-627665855519-us-east-1
+    memory:
+      mode: STM_ONLY
+      memory_id: valyuagent_mem-Iaf4sZHsXr
+      memory_arn: arn:aws:bedrock-agentcore:us-east-1:627665855519:memory/valyuagent_mem-Iaf4sZHsXr
+      memory_name: valyuagent_mem
+      event_expiry_days: 30
+      first_invoke_memory_check_done: true
+      was_created_by_toolkit: false
+    identity:
+      credential_providers: []
+      workload: null
+    authorizer_configuration: null
+    request_header_configuration: null
+    oauth_configuration: null
+    api_key_env_var_name: null
+    api_key_credential_provider_name: null
+    is_generated_by_agentcore_create: false
