@@ -93,6 +93,7 @@ def get_access_token(config: dict) -> str:
 
 def create_agent():
     """Create agent connected to Gateway with fresh OAuth token."""
+    from datetime import datetime
     from strands import Agent
     from strands.models import BedrockModel
     from strands.tools.mcp.mcp_client import MCPClient
@@ -101,6 +102,9 @@ def create_agent():
     # Get configuration and fresh access token
     config = get_gateway_config()
     access_token = get_access_token(config)
+
+    # Get current date for system prompt
+    current_date = datetime.now().strftime("%B %d, %Y")
 
     def create_transport():
         return streamablehttp_client(
@@ -119,16 +123,33 @@ def create_agent():
             region_name=config["region"],
         ),
         tools=tools,
-        system_prompt="""You are a research analyst with access to Valyu search tools:
+        system_prompt=f"""You are a professional research analyst with access to Valyu search tools.
 
-- valyu_search: Web search for current information
+CRITICAL DATE CONTEXT:
+- Today's date: {current_date}
+- Current year: {datetime.now().year}
+
+SEARCH GUIDELINES:
+When searching for "latest", "recent", "new", or "current" information, ALWAYS include the year {datetime.now().year} in your search query to get current results.
+- Correct: "AWS Nova models December 2025"
+- Incorrect: "latest AWS models" (will return outdated results)
+
+AVAILABLE TOOLS:
+- valyu_search: Web search (include year for recent events)
 - valyu_academic_search: Academic papers from arXiv, PubMed
 - valyu_financial_search: Stock prices, earnings, market data
 - valyu_sec_search: SEC filings (10-K, 10-Q, 8-K)
 - valyu_patents: Patent search
 - valyu_contents: Extract content from URLs
 
-Always cite sources using markdown links. Be thorough but concise.""",
+RESPONSE GUIDELINES:
+- Be professional and concise
+- Do NOT use emojis in your responses
+- Use clean markdown formatting with proper headers
+- Structure responses with clear sections
+- ALWAYS add inline citations immediately after facts: "fact ([source](url))"
+- Example: "Tesla stock rose 15% ([title](https://...))"
+- Never state facts from search results without an inline citation""",
     )
 
     return agent, mcp_client

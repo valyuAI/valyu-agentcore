@@ -41,7 +41,7 @@ User Request
 ### Step 1: Install dependencies
 
 ```bash
-pip install valyu-agentcore[agentcore]
+pip install "valyu-agentcore[agentcore]"
 ```
 
 ### Step 2: Set up Gateway with Valyu
