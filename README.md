@@ -6,6 +6,14 @@ Add web search, SEC filings, financial data, academic papers, patents, and biome
 
 Valyu is the [leading search API for AI agents](https://www.valyu.ai/blogs/benchmarking-search-apis-for-ai-agents).
 
+![Valyu AgentCore Demo](assets/valyu-agentcore-demo.png)
+
+## Architecture
+
+![Architecture](assets/architecture/valyu-strands.png)
+
+The agent runs locally (or on AWS Runtime) and uses Valyu tools to search across web, finance, SEC filings, academic papers, patents, and biomedical data. LLM inference is powered by Amazon Bedrock.
+
 ## Installation
 
 ```bash
@@ -90,6 +98,31 @@ agentcore invoke '{"prompt": "What is NVIDIA stock price?"}'
 - Serverless scaling
 
 See [examples/runtime/](examples/runtime/) for complete walkthrough.
+
+## Demo UI
+
+Try the interactive Streamlit demo to explore all features:
+
+```bash
+# Set your API key
+export VALYU_API_KEY=your-key
+
+# Run the demo
+streamlit run examples/app.py
+```
+
+**Features:**
+- **Local Mode** - Direct API calls to Valyu
+- **Gateway Mode** - Route through AWS AgentCore Gateway
+- **Runtime Mode** - Serverless execution on AWS
+
+**Agents:**
+- Single-tool agents: Web, Finance, SEC, Academic, Patents, Biomedical, Economics
+- Multi-tool agents: Financial Analyst, Research Assistant, Due Diligence
+
+**Views:**
+- **Chat** - Standard chat interface
+- **Compare** - Side-by-side comparison: with Valyu search vs without
 
 ## Available Tools
 
@@ -289,22 +322,12 @@ valyu-agentcore/
 │   ├── tools.py             # Strands Agent tools
 │   └── gateway.py           # AgentCore Gateway integration
 ├── examples/
+│   ├── app.py               # Streamlit demo UI
 │   ├── local/               # Direct Strands usage
-│   │   ├── web_search.py
-│   │   ├── finance_search.py
-│   │   └── ...
 │   ├── runtime/             # AgentCore Runtime deployment
-│   │   ├── agent.py
-│   │   └── README.md
 │   ├── gateway/             # AgentCore Gateway setup
-│   │   ├── add_valyu_target.py
-│   │   └── README.md
-│   ├── use_cases/           # Real-world agent examples
-│   │   ├── financial_analyst.py
-│   │   ├── research_assistant.py
-│   │   └── due_diligence.py
-│   └── notebooks/
-│       └── getting_started.ipynb
+│   └── use_cases/           # Real-world agent examples
+├── assets/                  # Images and diagrams
 ├── cloudformation/          # AWS CloudFormation templates
 └── iam-policies/            # IAM policy templates
 ```
