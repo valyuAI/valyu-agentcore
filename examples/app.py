@@ -18,6 +18,10 @@ import subprocess
 import streamlit as st
 from queue import Queue
 from threading import Thread
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 st.set_page_config(
     page_title="Valyu AgentCore",
