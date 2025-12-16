@@ -1,0 +1,11 @@
+{
+  "gateway_id": "your-gateway-id",
+  "gateway_url": "https://your-gateway-id.gateway.bedrock-agentcore.us-east-1.amazonaws.com/mcp",
+  "target_id": "your-target-id",
+  "region": "us-east-1",
+  "cognito_client_id": "your-cognito-client-id",
+  "cognito_client_secret": "your-cognito-client-secret",
+  "cognito_user_pool_id": "your-user-pool-id",
+  "cognito_domain": "your-cognito-domain",
+  "cognito_scope": "valyu-search-gateway/invoke"
+}
