@@ -29,6 +29,12 @@ For AgentCore Gateway support:
 uv add valyu-agentcore[agentcore]
 ```
 
+
+## Watch it in action!  
+
+Have a look at our Strands agent implementation live at ["AWS Let's Build a Startup" on YouTube](https://www.youtube.com/watch?v=tqQEGSay9aE&t=30s). 
+<a href="https://www.youtube.com/watch?v=tqQEGSay9aE&t=30s" target="_blank">![AWS Live Show](assets/letsbuildastartup-valyu.png)</a>
+
 ## Quick Start
 
 ### Local Development
