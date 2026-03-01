@@ -59,4 +59,5 @@ Thumbs.db
 secrets.json
 
 # Ignore starter and config files
-gateway_config.json
+gateway_config.json*_gateway_config.json
+valyu_gateway_config.json
